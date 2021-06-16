@@ -15,33 +15,13 @@ class _Getch:
 def get():
     d_1 = input()
     d_2 = input()
+    # d_3 = input()
     dir = input()
-    send = d_1 + " " + d_2 + " " + dir + "\n"
-    d_1 = int(d_1)
-    d_2 = int(d_2)
+    send = "/park/run " + d_1 + " " + d_2 + " " + dir + "\r\n"
+    # send = "/park/run " + d_1 + " " + d_2 + " " + d_3 + " " + dir + "\r\n"
+    # send = "/goStraight/run -100 \r\n"
     print(send)
-    if dir == 'e' :
-        print ("start")
-        s.write("/goStraight/run -100 \n".encode())
-        time.sleep(d_2/8 + 1)
-        s.write("/stop/run \n".encode())
-        s.write("/turn/run 100 -0.3 \n".encode())
-        time.sleep(2.4)
-        s.write("/stop/run \n".encode())
-        s.write("/goStraight/run -100 \n".encode())
-        time.sleep(d_1/8 + 1.5)
-        s.write("/stop/run \n".encode())
-    if dir == 'w' :
-        print ("start")
-        s.write("/goStraight/run -100 \n".encode())
-        time.sleep(d_2/8 + 1)
-        s.write("/stop/run \n".encode())
-        s.write("/turn/run 100 0.3 \n".encode())
-        time.sleep(2.4)
-        s.write("/stop/run \n".encode())
-        s.write("/goStraight/run -100 \n".encode())
-        time.sleep(d_1/8 + 1.5)
-        s.write("/stop/run \n".encode())
+    s.write(send.encode())
     return 1
 
 if len(sys.argv) < 1:
